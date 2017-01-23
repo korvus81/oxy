@@ -220,9 +220,9 @@ func (f *httpForwarder) copyRequest(req *http.Request, u *url.URL) *http.Request
 	if !f.passHost {
 		outReq.Host = u.Host
 	}
-	outReq.Proto = "HTTP/1.1"
-	outReq.ProtoMajor = 1
-	outReq.ProtoMinor = 1
+	outReq.Proto = req.Proto
+	outReq.ProtoMajor = req.ProtoMajor
+	outReq.ProtoMinor = req.ProtoMinor
 
 	// Overwrite close flag so we can keep persistent connection for the backend servers
 	outReq.Close = false
